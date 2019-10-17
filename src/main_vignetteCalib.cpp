@@ -229,14 +229,13 @@ int main( int argc, char** argv )
 
 	for(int i=0;i<reader->getNumImages();i+=imageSkip)
 	{
-        std::vector<aruco::Marker> Markers;
 		ExposureImage* img = reader->getImage(i,true, false, false, false);
 
 		cv::Mat InImage;
 		cv::Mat(h_out, w_out, CV_32F, img->image).convertTo(InImage, CV_8U, 1, 0);
 		delete img;
 
-		MDetector.detect(InImage,Markers);
+                std::vector<aruco::Marker> Markers = MDetector.detect(InImage);
 		if(Markers.size() != 1) continue;
 
         std::vector<cv::Point2f> ptsP;
