@@ -96,6 +96,8 @@ UndistorterFOV::UndistorterFOV(const char* configFileName)
 	else if(l3 == "none")
 	{
 		printf("NO RECTIFICATION\n");
+		out_width = in_width;
+		out_height = in_height;
 		return;
 	}
 	else if(std::sscanf(l3.c_str(), "%f %f %f %f %f", &outputCalibration[0], &outputCalibration[1], &outputCalibration[2], &outputCalibration[3], &outputCalibration[4]) == 5)
